@@ -1,0 +1,12 @@
+server:
+  port: 8080
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/spring_boot_study?serverTimezone=Asia/Shanghai
+    username: root
+    password: 
+mybatis:
+  type-aliases-package: com.litong.spring.boot.mybatis.tk.model
+  configuration:
+    map-underscore-to-camel-case: true

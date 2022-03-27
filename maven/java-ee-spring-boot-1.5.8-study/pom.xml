@@ -1,0 +1,29 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.litong</groupId>
+  <artifactId>java-ee-spring-boot-1.5.8-study</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <parent>
+    <groupId>org.springframework.boot</groupId>
+    <artifactId>spring-boot-starter-parent</artifactId>
+    <version>1.5.8.RELEASE</version>
+  </parent>
+  <properties>
+    <!-- 文件拷贝时的编码 -->
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <!--继承spring-boot时才有效 -->
+    <java.version>1.8</java.version>
+  </properties>
+  <modules>
+    <module>ee-spring-boot-1.5.8-devtools</module>
+    <module>ee-spring-boot-1.5.8-mybatis-plus-3.3.0</module>
+    <module>ee-spring-boot-1.5.8-shiro</module>
+    <module>ee-spring-boot-1.5.8-upload</module>
+    <module>ee-spring-boot-1.5.8-mybatis-plus-3.1.1</module>
+    <module>ee-spring-boot-1.5.8-layui-2.5.5</module>
+    <module>ee-spring-boot-1.5.8-easy-excel</module>
+    <module>ee-spring-boot-1.5.8-web</module>
+    <module>ee-spring-boot-1.5.8-hello</module>
+  </modules>
+</project>

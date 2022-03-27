@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.litong.study.spring.boot.v158.excel.dao.WaterLevelMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.litong.study.spring.boot.v158.excel.entity.WaterLevel">
+        <result column="id" property="id" />
+        <result column="site_name" property="siteName" />
+        <result column="level" property="level" />
+        <result column="time" property="time" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, site_name, level, time
+    </sql>
+
+</mapper>

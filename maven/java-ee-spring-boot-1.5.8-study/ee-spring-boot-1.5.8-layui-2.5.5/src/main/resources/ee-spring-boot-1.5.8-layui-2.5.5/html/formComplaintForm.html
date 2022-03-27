@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui-v2.5.5/css/layui.css" />
+</head>
+
+<body>
+<form class="layui-form" action="" style="display: block;" id="form-data" lay-filter="data-form">
+  <div class="layui-form-item">
+    <label for="" class="layui-form-label">投诉ID</label>
+    <div class="layui-input-block">
+      <input type="text" name="id" placeholder="投诉ID自动生成,不要输入" autocomplete="off" class="layui-input" readonly>
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label for="" class="layui-form-label">服务编号</label>
+    <div class="layui-input-block">
+      <input type="text" class="layui-input" name="serviceCode" required lay-verify="required" placeholder="请输入服务编号" />
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <lable class="layui-form-label">服务类型</lable>
+    <div class="layui-input-block">
+      <input type="text" name="compType" class="layui-input" placeholder="请输服务类型" autocomplet="off" required layui-verify='required' /></div>
+  </div>
+  <div class="layui-form-item">
+    <label class="layui-form-label">投诉订单号</label>
+    <div class="layui-input-block">
+      <input type="text" class="layui-input" name="compOrder" placeholder="请输入服务订单号" autocomplete='off' required layui-verify='required' />
+    </div>
+  </div>
+  <div class="layui-form-item">
+    <label for="" class="layui-form-label">投诉原因</label>
+    <div class="layui-input-block">
+      <input type="text" class="layui-input" placeholder="请输入投诉原因" name="compReason" autocomplete="off" required layui-verify="required" /></div>
+  </div>
+  <div class="layui-form-item">
+    <label for="" class="layui-form-label">投诉详情</label>
+    <div class="layui-input-block">
+      <input type="text" class="layui-input" placeholder="请输入投诉详情" name="compDetail" autocomplete="off" required layui-verify='required' /></div>
+  </div>
+  <div class="layui-from-item">
+    <label for="" class="layui-form-label">投诉状态</label>
+    <div class="layui-input-block">
+      <input type="text" class="layui-input" placeholder="请输入投诉状态" name="complainState" autocomplete="off" required layui-verify="required" /></div>
+  </div>
+  <div class="layui-form-item">
+    <label for="" class="layui-form-label">数据状态</label>
+    <div class="layui-input-block">
+      <input type="text" class="layui-input" placeholder="请输入数据状态" name="validFlag" autocomplete="off" required layui-verify='required' /></div>
+  </div>
+  <div class="layui-form-item">
+    <div class="layui-input-block">
+      <button class="layui-btn" lay-submit lay-filter="front-submit" id="front-submit">立即提交</button>
+      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      <input type="button" class="layui-btn layui-btn-danger" value="关闭" onclick="layer_close()" />
+    </div>
+  </div>
+</form>
+
+</body>
+<script src="https://www.layuicdn.com/layui-v2.5.5/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+var uri = projectName + '/formComplaint/';
+layui.use(['form'], function() {
+  form = layui.form,
+  layuiFormRender(uri,form);
+});
+</script>
+
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.litong.spring.boot.v158.layui.v255.mapper.FormComplaintMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.litong.spring.boot.v158.layui.v255.entity.FormComplaint">
+        <id column="id" property="id" />
+        <result column="service_code" property="serviceCode" />
+        <result column="comp_type" property="compType" />
+        <result column="comp_order" property="compOrder" />
+        <result column="comp_reason" property="compReason" />
+        <result column="comp_detail" property="compDetail" />
+        <result column="complain_state" property="complainState" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, service_code, comp_type, comp_order, comp_reason, comp_detail, complain_state
+    </sql>
+
+</mapper>

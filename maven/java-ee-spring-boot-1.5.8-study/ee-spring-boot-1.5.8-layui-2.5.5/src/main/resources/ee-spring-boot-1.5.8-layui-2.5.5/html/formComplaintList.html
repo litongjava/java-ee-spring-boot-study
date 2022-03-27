@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>layui</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="stylesheet" type="text/css" href="https://www.layuicdn.com/layui-v2.5.5/css/layui.css" />
+<style type="text/css">
+.layui-table-body tr:nth-child(even) {
+  background-color: #def563;
+}
+</style>
+</head>
+
+<body>
+<div class="layui-card">
+  <div class="layui-card-header layui-form">
+    <div class="layui-form-item">
+      <div class="layui-inline">
+        <label class="layui-form-label">投诉ID</label>
+        <div class="layui-input-block">
+          <input type="text" name="id" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <label class="layui-form-label">服务编号</label>
+        <div class="layui-input-block">
+          <input type="text" name="serviceCode" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <label class="layui-form-label">投诉订单号</label>
+        <div class="layui-input-block">
+          <input type="text" name="compOrder" placeholder="请输入" autocomplete="off" class="layui-input">
+        </div>
+      </div>
+      <div class="layui-inline">
+        <button class="layui-btn layuiadmin-btn-useradmin" lay-submit lay-filter="front-search">
+          <i class="layui-icon layui-icon-search"></i>
+        </button>
+      </div>
+    </div>
+    <!--end layui-form-item-->
+  </div>
+  <!--end lay-card-head-->
+  <div class="layui-card-body">
+    <table id="data-table" lay-filter="data-table"></table>
+  </div>
+</div>
+
+</body>
+<script type="text/html" id="toolBar">
+  <div class="layui-btn-container">
+    <button class="layui-btn layui-btn-sm layui-btn-danger layui-btn-tool" data-type="batchdel"><i class="layui-icon"></i>批量删除</button>
+    <button class="layui-btn layui-btn-sm layui-btn-tool" data-type="add"><i class="layui-icon"></i>添加</button>
+  </div>
+</script>
+<script type="text/html" id="operation-btns">
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+</script>
+
+<script src="https://www.layuicdn.com/layui-v2.5.5/layui.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+var uri = projectName + '/formComplaint';
+var orderBy='time';
+var isAsc="false";
+var title = "投诉单";
+var formPageName="formComplaintForm.html";
+
+var cols = [
+  [
+    { checkbox: true }, //开启多选框
+    { field: 'id', width: 100, title: '投诉ID' },
+    { field: 'serviceCode', width: 100, title: '服务编号' },
+    {
+      field: 'compType',
+      width: 100,
+      title: '服务类型',
+      templet: function(d) {
+        if (d.compType == 0) {
+          return '<span style="color: #D03948;">医院</span>';
+        } else if (d.compType == 1) {
+          return '<span style="color: #18A4D0;">科室</span>';
+        } else if (d.compType == 2) {
+          return '<span style="color: #5CD03F;">医生</span>';
+        }
+      }
+    }, { field: 'compOrder', width: 150, title: '投诉订单号' },
+    { field: 'compReason', width: 150, title: '投诉原因' },
+    { field: 'compDetail', width: 150, title: '投诉详情' }, 
+	{
+      field: 'complainState',
+      width: 150,
+      title: '投诉状态',
+      templet: function(d) {
+        if (d.complainState == 0) {
+          return '<span style="color: #D03948;">未处理</span>';
+        } else if (d.complainState == 1) {
+          return '<span style="color: #18A4D0;">已处理</span>';
+        }
+      }
+    }, {
+      field: 'validFlag',
+      width: 150,
+      title: '数据状态',
+      templet: function(d) {
+        if (d.validFlag == true) {
+          return '<span style="color: #18A4D0;">有效</span>';
+        } else {
+          return '<span style="color: #D03948;">无效</span>';
+        }
+      }
+    },
+    { fixed: 'right', title: '操作', toolbar: '#operation-btns' }
+  ]
+]
+
+layui.use(['table', 'layer', 'form', 'laypage'], function() {
+  layuiTableRender(uri, title, cols,formPageName,layui.table,layui.layer,layui.form,layui.laypage);
+});
+</script>
+
+</html>

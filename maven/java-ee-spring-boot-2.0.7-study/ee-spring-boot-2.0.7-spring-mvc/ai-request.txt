@@ -1,0 +1,7 @@
+¬ísr5org.springframework.remoting.support.RemoteInvocation_lö
+
+[	argumentst[Ljava/lang/Object;L
+attributestLjava/util/Map;L
+methodNametLjava/lang/String;[parameterTypest[Ljava/lang/Class;xpur[Ljava.lang.Object;ÎXs)lxpsr3com.incesoft.ai.commonsapi.service.model.AskRequestS	maxReturnS
+renderTypeZwordInfoRequiredLfilterq~[modulest[Ljava/lang/String;Lquestionq~[tagsq~	LuserIdq~xpsrjava.util.HashMapÚÁÃ`ÑF
+loadFactorI	thresholdxp?@wtplatformtwebxptä¸å½å±äº§åçæ§è´¨pt 4eaee897f0e34dbc85c9b481af6b9ee9ptprocessur[Ljava.lang.Class;«×®ËÍZxpvq~

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:p="http://www.springframework.org/schema/p" xmlns:context="http://www.springframework.org/schema/context"
+  xmlns:util="http://www.springframework.org/schema/util" xmlns:mvc="http://www.springframework.org/schema/mvc"
+  xsi:schemaLocation="
+  http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd
+  http://www.springframework.org/schema/util
+  http://www.springframework.org/schema/util/spring-util.xsd
+  http://www.springframework.org/schema/context 
+  http://www.springframework.org/schema/context/spring-context.xsd
+  http://www.springframework.org/schema/mvc
+  http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+  <bean id="httpInvokerRequestExecutor" class="com.eastrobot.commonsapi.common.ClusterHttpInvokerRequestExecutor">
+    <property name="connsPerHost" value="100" />
+    <property name="connFetchTimeout" value="5000" />
+    <property name="connTimeout" value="5000" />
+    <property name="connReadTimeout" value="10000" />
+    <property name="executeThreadCount" value="10" />
+  </bean>
+  
+  <bean id="askService" class="com.eastrobot.commonsapi.common.ClusterHttpInvokerProxyFactoryBean">
+    <property name="serviceUrl" value="http://{nodeAddr}/ask.do" />
+    <!-- <property name="nodeAddrs" value="${ai.addr}" /> -->
+    <property name="nodeAddrs" value="47.92.108.35:9003" />
+    <property name="serviceInterface" value="com.incesoft.ai.commonsapi.service.AskService" />
+    <property name="httpInvokerRequestExecutor" ref="httpInvokerRequestExecutor" />
+  </bean>
+</beans>

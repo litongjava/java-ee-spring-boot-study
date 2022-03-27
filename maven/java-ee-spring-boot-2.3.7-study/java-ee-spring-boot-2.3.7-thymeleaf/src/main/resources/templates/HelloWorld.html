@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+<title>Hello World!</title>
+</head>
+<body>
+  <h1 th:inline="text">Hello.v.2</h1>
+  <p th:text="${hello}"></p>
+  
+  <div th:with="html='<h3>若依框架</h3>'">
+    <p>1、转义字符输出 <p th:text="${html}"></p>
+    <p>2、无需字符转义 <p th:utext="${html}"></p>
+  </div>
+</body>
+</html>
