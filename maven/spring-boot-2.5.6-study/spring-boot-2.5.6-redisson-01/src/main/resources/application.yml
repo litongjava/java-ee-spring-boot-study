@@ -1,0 +1,17 @@
+spring:
+  main:
+    banner-mode: "off"
+  redis:
+    cluster:
+      nodeAddresses: [
+          "redis://106.14.75.227:7006",
+          "redis://106.14.75.227:7005",
+          "redis://106.14.75.227:7004",
+          "redis://106.14.75.227:7003",
+          "redis://106.14.75.227:7002",
+          "redis://106.14.75.227:7001"
+      ]
+    password: QYSymZW@^/
+    single:
+      address: "redis://106.14.75.227:6379"
+      database: 7

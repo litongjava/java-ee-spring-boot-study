@@ -1,0 +1,17 @@
+#DataSourcespring:
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://cdb-fn1uk2sj.gz.tencentcdb.com:10159/yangtze_river_app?useunicode=true&characterEncoding=utf8&useSSL=false
+    username: yangtze_river_ap
+    password: Cjwb1234
+  devtools:
+    restart:
+      trigger-file: trigger.txt
+  main:
+    banner-mode: "off"
+mybatis-plus:
+  global-config:
+    banner: false # 是否显示mybatis-plus的图标
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

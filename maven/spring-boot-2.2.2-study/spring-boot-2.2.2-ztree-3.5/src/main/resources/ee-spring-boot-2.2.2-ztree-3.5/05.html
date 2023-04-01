@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="js/ztree/css/zTreeStyle/zTreeStyle.css" />
+<script type="text/javascript" src="js/ztree/js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/ztree/js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="js/ztree/js/jquery.ztree.excheck-3.5.js"></script>
+<script type="text/javascript" src="js/ztree/js/jquery.ztree.exedit-3.5.js"></script>
+<script src="js/commons.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+//加载ztree
+var uri = contextPath + "/tree/menu";
+var listUrl = uri + "/list";
+var saveUrl = uri + "/save";
+var removeUrl = uri + "/removeById";
+var updateUrl = uri + "/updateById";
+var treeId = "treeDemo";
+//保存ztree对象
+var treeObj;
+var setting = {
+  view: {
+    addHoverDom: addHoverDom,
+    removeHoverDom: removeHoverDom,
+    selectedMulti: false,
+    showLine: true,
+    showIcon: true
+  },
+  edit: {
+    enable: true,
+    showRemoveBtn: setRemoveBtn,
+    removeTitle: "删除分类",
+    renameTitle: "编辑分类",
+    drag: {
+      prev: true,
+      next: true,
+      inner: false
+    },
+    editNameSelectAll: true
+  },
+  data: {
+    simpleData: {
+      enable: true
+    }
+  },
+  callback: {
+    beforeRemove: beforeRemove,
+    onRemove: onRemove,
+    beforeClick: beforeClick,
+    beforeEditName: beforeEditName,
+    beforeRename: beforeRename,
+    onRename: onRename,
+    beforeDrag: beforeDrag,
+    beforeDrop: beforeDrop
+  }
+};
+
+function beforeClick(treeId, treeNodes, clickFlag) {
+  //
+  return false;
+}
+//用于捕获节点编辑按钮的 click 事件，并且根据返回值确定是否允许进入名称编辑状态
+function beforeEditName(treeId, treeNode) {
+  treeObj.selectNode(treeNode);
+  return true;
+}
+//用于捕获分类编辑名称结束（Input 失去焦点 或 按下 Enter 键）之后，更新分类名称数据之前的事件回调函数
+function beforeRename(treeId, treeNode, newName) {
+  if(newName.length == 0 || newName.indexOf("请输入名称") >= 0) {
+    alert('亲，请输入分类名称！');
+    setTimeout(function() { treeObj.editName(treeNode) }, 10);
+    return false;
+  }
+  if(newName.length > 15) {
+    alert('亲，分类名称过长！');
+    setTimeout(function() { treeObj.editName(treeNode) }, 10);
+    return false;
+  }
+  //用户按esc后执行该代码
+  native_name = treeNode.name;
+  if(native_name == newName) {
+    return;
+  }
+  //获取新的id和名称
+  var data = { "id": treeNode.id, "name": newName };
+  $.post(updateUrl, data, function(resp) {
+    if(resp) {
+      return true;
+    } else {
+      alert('亲，操作失败，请稍后再试！');
+      return false;
+    }
+  });
+  return true;
+}
+//执行编辑操作
+function onRename(e, treeId, treeNode, isCancel) {
+  //用户按esc取消了
+  if(isCancel) {
+    return;
+  }
+  //用户按了Enter键,但是可能没有修过名字
+  if(native_name == treeNode.name) {
+    return;
+  }
+}
+//移除分类前执行
+function beforeRemove(treeId, treeNode) {
+  treeObj.selectNode(treeNode);
+  return confirm("确认删除分类[ " + treeNode.name + " ]吗？")
+}
+//执行删除操作后提示
+function onRemove(e, treeId, treeNode) {
+  var data = { "id": treeNode.id };
+  $.post(removeUrl, data, function(resp) {
+    if(resp) {} else {
+      alert('亲，删除失败！');
+    }
+  });
+}
+//用于捕获节点被拖拽之前的事件回调函数,返回true表示允许拖拽
+function beforeDrag(treeId, treeNodes) {
+  return true;
+}
+//拖拽释放后执行
+function beforeDrop(treeId, treeNodes, targetNode, moveType, isCopy) {
+  //1. 禁止将节点拖拽成为根节点
+  //if(!(targetNode == null || (moveType != "inner" && !targetNode.parentTId))){
+  //  return false;
+  //}
+  for(var i = 0; i < treeNodes.length; i++) {
+    var data = { "id": treeNodes[i].id, "pId": targetNode.id };
+    $.post(updateUrl, data, function(resp) {
+      if(resp){
+        
+      }else{
+        alert("亲,更新失败");
+      }
+    });
+  }
+  return true;
+}
+//添加子分类
+function addHoverDom(treeId, treeNode) {
+  var sObj = $("#" + treeNode.tId + "_span");
+  if(treeNode.editNameFlag || $("#addBtn_" + treeNode.tId).length > 0 || treeNode.level == 3) return;
+  var addStr = "<span class='button add' id='addBtn_" + treeNode.tId + "' title='添加分类' οnfοcus='this.blur();'></span>";
+  sObj.after(addStr);
+  var btn = $("#addBtn_" + treeNode.tId);
+  if(btn) {
+    btn.bind("click", function() {
+      //后台生成id返回
+      var name = "新分类";
+      var data = { "pId": treeNode.id, "name": name };
+      var treeNodes;
+      $.post(saveUrl, data, function(resp) {
+        console.log(resp);
+        addNode(resp, name, treeNode);
+      })
+    });
+  }
+}
+
+function addNode(id, name, parentNode) {
+  treeObj.addNodes(parentNode, { id: id, pId: parentNode.id, name: name });
+  var subNode = treeObj.getNodeByParam('id', id, parentNode);
+  //treeObj.selectNode(subNode,false,false);
+  treeObj.editName(subNode);
+}
+//父级分类去除删除功能
+function setRemoveBtn(treeId, treeNode) {
+  return !treeNode.isParent;
+}
+//鼠标移开按钮消失
+function removeHoverDom(treeId, treeNode) {
+  $("#addBtn_" + treeNode.tId).unbind().remove();
+};
+//添加按钮点击事件
+function addClick() {
+  $("#addParent").bind("click", { isParent: true }, add);
+}
+//移除分类
+function remove(e) {
+  nodes = treeObj.getSelectedNodes(),
+    treeNode = nodes[0];
+  if(nodes.length == 0) {
+    alert("亲，请先选择一个分类!");
+    return;
+  }
+  var callbackFlag = $("#callbackTrigger").attr("checked");
+  treeObj.removeNode(treeNode, callbackFlag);
+};
+
+function onloadZTree() {
+  $.get(listUrl, function(resp) {
+    treeObj = $.fn.zTree.init($("#" + treeId), setting, resp);
+    //展开一级节点
+    var nodes = treeObj.getNodes();
+    if(nodes.length > 0) {
+      for(var i = 0; i < nodes.length; i++) {
+        treeObj.expandNode(nodes[i], true, false, false);
+      }
+    }
+  });
+}
+//ajax
+function ajaxError(x, e) {
+  if(x.status == 0) {
+    alert(' Check Your Network.');
+  } else if(x.status == 404) {
+    alert('Requested URL not found.');
+  } else if(x.status == 500) {
+    alert('Internel Server Error.');
+  } else {
+    alert('Unknow Error.\n' + x.responseText);
+  }
+}
+//初始化操作
+$(document).ready(function() {
+  $.ajaxSetup({
+    error: ajaxError,
+    timeout: 1000,
+    complete: function(XMLHttpRequest, status) {
+      if(status == "timeout") {
+        alert("亲,请求超时了,请检查网络连接");
+      }
+    }
+  });
+  onloadZTree();
+});
+</script>
+</head>
+
+<body>
+<ul id="treeDemo" class="ztree"></ul>
+</body>
+
+</html>

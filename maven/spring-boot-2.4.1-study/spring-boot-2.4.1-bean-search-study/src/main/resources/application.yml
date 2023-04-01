@@ -1,0 +1,9 @@
+#DataSourcespring:
+spring:
+  main:
+    banner-mode: "off"
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/spring_boot_bean_search?userSSL=true&useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT
+    username: root
+    password: robot_123456#

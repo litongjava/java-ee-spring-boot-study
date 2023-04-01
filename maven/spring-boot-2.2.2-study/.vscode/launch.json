@@ -1,0 +1,56 @@
+{
+  // 使用 IntelliSense 了解相关属性。 
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "CodeLens (Launch) - App",
+      "request": "launch",
+      "mainClass": "App",
+      "projectName": "java-ee-spring-boot-2.2.2-study"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch) - Current File",
+      "request": "launch",
+      "mainClass": "${file}"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-App<ee-spring-boot-2.2.2-security-define-user-login>",
+      "request": "launch",
+      "mainClass": "com.litong.spring.boot.v222.secruty.controller.App",
+      "projectName": "ee-spring-boot-2.2.2-security-define-user-login"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-App<ee-spring-boot-2.2.2-security-remember-me>",
+      "request": "launch",
+      "mainClass": "com.litong.spring.boot.v222.secruty.controller.App",
+      "projectName": "ee-spring-boot-2.2.2-security-remember-me"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-SpringbootSecurityJspApplication<ee-spring-boot-2.2.2-security-simple-authentication>",
+      "request": "launch",
+      "mainClass": "com.example.springboot_security_jsp.SpringbootSecurityJspApplication",
+      "projectName": "ee-spring-boot-2.2.2-security-simple-authentication"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-App<ee-spring-boot-2.2.2-security-user-validate-code>",
+      "request": "launch",
+      "mainClass": "com.litong.spring.boot.v222.secruty.controller.App",
+      "projectName": "ee-spring-boot-2.2.2-security-user-validate-code"
+    },
+    {
+      "type": "java",
+      "name": "Debug (Launch)-App<ee-spring-boot-2.2.2-tk-mybatis>",
+      "request": "launch",
+      "mainClass": "com.litong.spring.boot.mybatis.tk.App",
+      "projectName": "ee-spring-boot-2.2.2-tk-mybatis"
+    }
+  ]
+}

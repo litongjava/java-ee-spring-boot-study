@@ -1,0 +1,32 @@
+spring:
+  main:
+    banner-mode: "off"
+  shardingsphere:
+    mode:
+      type: Memory                                     # 内存模式，元数据保存在当前进程中
+    datasource:
+      names: master,slave                              # 数据源名称，这里有两个
+      master:                                          # 跟上面的数据源对应
+        type: com.alibaba.druid.pool.DruidDataSource   # 连接池
+        url: jdbc:mysql://127.0.0.1:3306/test          # 连接url
+        username: root
+        password: 123456
+      slave:                                           # 跟上面的数据源对应
+        type: com.alibaba.druid.pool.DruidDataSource
+        url: jdbc:mysql://127.0.0.1:3306/test
+        username: root
+        password: 123456
+    rules:
+      readwrite-splitting:                             # 读写分离规则
+        data-sources:                                  # 数据源配置
+          random:                                      # 这个名字随便起
+            type: Static                               # 静态类型
+            load-balancer-name: round_robin            # 负载均衡算法名字
+            props:
+              write-data-source-name: master           # 写数据源
+              read-data-source-names: slave            # 读数据源
+        load-balancers:                                # 负载均衡配置
+          round_robin:                                 # 跟上面负载均衡算法的名字对应
+            type: ROUND_ROBIN                          # 负载均衡算法
+    props:
+      sql-show: true 

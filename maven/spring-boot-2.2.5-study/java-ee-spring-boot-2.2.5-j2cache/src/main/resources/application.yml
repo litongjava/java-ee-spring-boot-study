@@ -1,0 +1,16 @@
+server:
+  port: 8889
+  servlet:
+    context-path: /demo
+spring:
+  application:
+    name: demmo
+  devtools:
+    restart:
+      trigger-file: trigger.txt
+  cache:
+    type: none
+j2cache:
+  config-location: /j2cache.properties
+  redis-client: lettuce
+  open-spring-cache: true

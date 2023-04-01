@@ -1,0 +1,13 @@
+spring:
+  resources:
+    static-locations: classpath:/ee-spring-boot-2.0.7-ajax-download-file/
+  http:
+    encoding:
+      force: true
+      charset: utf-8
+      enabled: true
+server:
+  tomcat:
+    uri-encoding=UTF-8:
+  servlet:
+    context-path: /ee-spring-boot-2.0.7-ajax-download-file

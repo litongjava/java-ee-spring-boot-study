@@ -1,0 +1,15 @@
+#DataSourcespring:
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/mybatis_plus_study?userSSL=true&useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT
+    username: root
+    password: robot_123456# 
+  devtools:
+    restart:
+      trigger-file: trigger.txt
+  main:
+    banner-mode: "off"
+mybatis-plus:
+  global-config:
+    banner: false # 是否显示mybatis-plus的图标

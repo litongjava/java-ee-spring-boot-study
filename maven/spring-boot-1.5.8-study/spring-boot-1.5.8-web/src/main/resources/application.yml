@@ -1,0 +1,17 @@
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-6level%logger{0}.%M:%L - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-6level%logger{0}.%M:%L - %msg%n"
+server:
+  port: 31786
+  context-path: /ee-spring-boot-1.5.8-web
+spring:
+  application:
+    name: ee-spring-boot-1.5.8-web
+  main:
+    banner-mode: "off"
+  devtools:
+    restart:
+      trigger-file: trigger.txt
+  resources:
+    static-locations: classpath:/ee-spring-boot-1.5.8-web/

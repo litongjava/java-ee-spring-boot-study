@@ -1,0 +1,28 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>top.ppnt</groupId>
+  <artifactId>java-ee-spring-boot-2.5.6-study</artifactId>
+  <version>1.0</version>
+  <packaging>pom</packaging>
+  <modules>
+    <module>spring-boot-2.5.6-beetl-01</module>
+    <module>spring-boot-2.5.6-caffine-2.9.2</module>
+    <module>spring-boot-2.5.6-elasticsearch-6.3-demo01</module>
+    <module>spring-boot-2.5.6-elasticsearch-7.12.1-demo01</module>
+    <module>spring-boot-2.5.6-beetl-02</module>
+    <module>spring-boot-2.5.6-webdav-01</module>
+    <module>spring-boot-2.5.6-beetl-sql-01</module>
+    <module>spring-boot-2.5.6-webdav-02-milton</module>
+    <module>spring-boot-2.5.6-jasypt-01</module>
+    <module>spring-boot-2.5.6-redis-cluter-01</module>
+    <module>spring-boot-2.5.6-redisson-01</module>
+    <module>spring-boot-2.5.6-orika-demo01</module>
+    <module>spring-boot-2.5.6-controller01</module>
+    <module>spring-boot-2.5.6-jdbc01</module>
+    <module>spring-boot-2.5.6-advanced-mapper-statement</module>
+    <module>spring-boot-2.5.6-jfinal-db-5.0.3</module>
+    <module>spring-boot-2.5.6-live-relaod</module>
+    <module>spring-boot-2.5.6-minio-demo-01</module>
+    <module>spring-boot-2.5.6-mapstruct-jdk8-1.0.0.Final</module>
+  </modules>
+</project>

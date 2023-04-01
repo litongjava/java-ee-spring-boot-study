@@ -1,0 +1,25 @@
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-6level%logger{0}.%M:%L - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-6level%logger{0}.%M:%L - %msg%n"
+server:
+  port: 8080
+  context-path: /ee-spring-boot-1.5.8-layui-2.5.5
+spring:
+  application:
+    name: ee-spring-boot-1.5.8-layui-2.5.5
+  main:
+    banner-mode: "off"
+  devtools:
+    restart:
+      trigger-file: trigger.txt
+  resources:
+    static-locations: classpath:/ee-spring-boot-1.5.8-layui-2.5.5/
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/study_mybatis_plus?userSSL=true&useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT
+    username: root
+    password: 
+mybatis-plus:
+  global-config:
+    banner: false # 是否显示mybatis-plus的图标

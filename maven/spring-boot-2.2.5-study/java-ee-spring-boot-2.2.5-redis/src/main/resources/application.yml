@@ -1,0 +1,17 @@
+server:
+  port: 8889
+  servlet:
+    context-path: /demo
+spring:
+  application:
+    name: demmo
+  devtools:
+    restart:
+      trigger-file: trigger.txt
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+    database: 1
+  cache:
+    type: none

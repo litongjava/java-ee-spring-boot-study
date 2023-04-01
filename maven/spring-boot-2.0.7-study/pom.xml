@@ -1,0 +1,38 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.7.RELEASE</version>
+	</parent>
+	<groupId>com.litong</groupId>
+	<artifactId>ee-spring-boot-2.0.7-study</artifactId>
+	<version>1.0</version>
+	<packaging>pom</packaging>
+	<properties>
+		<!-- 文件拷贝时的编码 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<!--继承spring-boot时才有效 -->
+		<java.version>1.8</java.version>
+	</properties>
+	<modules>
+		<module>ee-spring-boot-2.0.7-admin-server</module>
+    <module>ee-spring-boot-2.0.7-ajax-download-file</module>
+    <module>ee-spring-boot-2.0.7-devtools</module>
+    <module>ee-spring-boot-2.0.7-docker01</module>
+    <module>ee-spring-boot-2.0.7-hello-jenkins</module>
+    <module>ee-spring-boot-2.0.7-jsp</module>
+    <module>ee-spring-boot-2.0.7-mybatis-plus01</module>
+    <module>ee-spring-boot-2.0.7-operation-log</module>
+    <module>ee-spring-boot-2.0.7-rabbitmq</module>
+    <module>ee-spring-boot-2.0.7-fileupload</module>
+    <module>ee-spring-boot-2.0.7-tomcat</module>
+    <module>ee-spring-boot-2.0.7-validate</module>
+    <module>ee-spring-boot-2.0.7-spring-mvc</module>
+    <module>ee-spring-boot-2.0.7-web-hello</module>
+    <module>ee-spring-boot-2.0.7-quartz</module>
+    <module>ee-spring-boot-2.0.7-include-system-jar</module>
+    <module>ee-spring-boot-2.0.7-threadpool</module>
+    <module>ee-spring-boot-2.0.7-thin-launcher</module>
+	</modules>
+</project>

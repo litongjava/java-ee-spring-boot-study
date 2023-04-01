@@ -1,0 +1,23 @@
+server:
+  port: 8000
+spring:
+  main:
+    banner-mode: "off"
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost/mybatis_plus_study?userSSL=true&useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT
+    username: root
+    password: robot_123456#
+#自动建表配置
+mybatis:
+  table:
+    auto: update
+  model:
+    pack: top.ppnt.actable.model #扫描用于创建表的对象的包名
+  database:
+    type: mysql
+
+mybatis-plus:
+  mapper-locations: classpath*:mappers/*.xml,classpath*:com/gitee/sunchenbin/mybatis/actable/mapping/*/*.xml
+  global-config:
+    banner: false # 是否显示mybatis-plus的图标

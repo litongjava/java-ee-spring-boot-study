@@ -1,0 +1,6 @@
+server:
+  servlet:
+    context-path: /spring-boot-2.5.6-beetl-01
+spring:
+  main:
+    banner-mode: "off"

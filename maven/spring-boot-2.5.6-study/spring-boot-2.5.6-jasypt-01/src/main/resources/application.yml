@@ -1,0 +1,10 @@
+spring:
+  main:
+    banner-mode: "off"
+jasypt:
+  encryptor:
+    algorithm: PBEWithMD5AndDES
+    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+us:
+  name: ENC(pN/SQT6JD60on2QV/++ngw==)

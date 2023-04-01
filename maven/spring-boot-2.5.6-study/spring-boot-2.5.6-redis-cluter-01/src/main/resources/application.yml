@@ -1,0 +1,17 @@
+spring:
+  main:
+    banner-mode: "off"
+  redis:
+    cluster:
+      nodes: 106.14.75.227:7001,106.14.75.227:7002,106.14.75.227:7003,106.14.75.227:7004,106.14.75.227:7005,106.14.75.227:7006
+      # 最大重定向次数
+      max-redirects: 5
+    # 密码
+    password: xxx
+    lettuce:
+      pool:
+        min-idle: 0
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        enabled: true

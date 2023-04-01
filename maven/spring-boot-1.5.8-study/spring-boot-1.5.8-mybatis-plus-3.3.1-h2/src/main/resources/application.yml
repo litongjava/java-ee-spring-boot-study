@@ -1,0 +1,24 @@
+#DataSourcespring:
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/schema-h2.sql
+    data: classpath:db/data-h2.sql
+    # url: jdbc:h2:mem:spring_boot_mybatis_plu_test
+    url: jdbc:h2:~/spring_boot_mybatis_plu_test
+    username: root
+    password: test
+  devtools:
+    restart:
+      trigger-file: trigger.txt
+  main:
+    banner-mode: "off"
+
+logging:
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-6level%logger{0}.%M:%L - %msg%n"
+    file: "%d{yyyy-MM-dd HH:mm:ss.SSS} %-6level%logger{0}.%M:%L - %msg%n"
+
+mybatis-plus:
+  global-config:
+    banner: false # 是否显示mybatis-plus的图标

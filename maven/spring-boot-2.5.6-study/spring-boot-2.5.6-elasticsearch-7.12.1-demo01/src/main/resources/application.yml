@@ -1,0 +1,5 @@
+spring:
+  main:
+    banner-mode: "off"
+elasticsearch:
+  ip: 127.0.0.1:9200

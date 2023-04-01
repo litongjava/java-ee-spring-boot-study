@@ -1,0 +1,13 @@
+spring:
+  main:
+    banner-mode: "off"
+milton:
+  filesystem_root: data
+  username: admin
+  password: 123456
+  exclude_paths:
+    - /webdav/auth
+logging:
+  level:
+    root: info
+  file: hotpot-webdav.log

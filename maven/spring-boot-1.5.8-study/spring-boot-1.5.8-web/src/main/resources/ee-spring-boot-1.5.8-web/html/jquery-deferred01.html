@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<meta charset="UTF-8">
+<title></title>
+<script src="../js/common.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+var url = projectName + "/data/index"
+
+var done = function(response, statusText, jqXHR) {
+  console.log(response);
+  console.log(statusText);
+  console.log(jqXHR);
+}
+var fail = function(jqXHR, statusText, error) {
+  console.log(statusText);
+}
+
+var progress=function(){
+  console.log("progress");
+}
+var always = function() {
+  console.log('I will always done.');
+}
+
+function get() {
+  $.ajax(url).done(done).fail(fail).progress(progress).always(always);
+}
+</script>
+</head>
+
+<body>
+</body>
+
+</html>

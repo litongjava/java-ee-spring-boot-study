@@ -1,0 +1,20 @@
+################################## beetlsql
+beetlsql:
+  sqlPath: /sql
+  basePackage: com.litongjava.spring.boot.beetl.sql.demo.dao
+  #mapper接口的后缀
+  daoSuffix: Dao
+  #是否向控制台输出执行的sql，默认为true
+beetl-beetlsql:
+  dev: true
+
+################################## hikari
+#数据源配置
+spring:
+  main:
+    banner-mode: "off"
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/beetl_study?characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=UTC
+    username: root
+    password: 123456

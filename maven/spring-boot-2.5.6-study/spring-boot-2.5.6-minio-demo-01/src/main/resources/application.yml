@@ -1,0 +1,20 @@
+spring:
+  main:
+    banner-mode: "off"
+  mvc:
+    hiddenmethod:
+      filter:
+        enabled: true
+  servlet:
+    #设置文件上传大小限制
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 150MB
+
+minio:
+  endpoint: http://serverip
+  port: 9002
+  accessKey: root
+  secretKey: robot_123456#
+  bucketName: fsp-dev
+  secure: false

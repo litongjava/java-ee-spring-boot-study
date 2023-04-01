@@ -1,0 +1,10 @@
+server:
+  port: 9002
+
+logging:
+  level:
+    com: debug
+
+rsa:
+  key:
+    pubKeyPath: D:\code\java\java-study\java-ee-spring-boot-study\maven\java-ee-spring-boot-2.1.3-study\authentication-server\id_key_rsa.pub
