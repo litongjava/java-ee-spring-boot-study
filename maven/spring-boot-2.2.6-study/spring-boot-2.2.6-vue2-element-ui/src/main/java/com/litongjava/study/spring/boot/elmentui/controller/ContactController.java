@@ -1,14 +1,11 @@
 package com.litongjava.study.spring.boot.elmentui.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
-
+import com.baomidou.mybatisplus.extension.api.R;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.litongjava.study.spring.boot.elmentui.entity.Contact;
 import com.litongjava.study.spring.boot.elmentui.service.ContactService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * <p>
@@ -18,7 +15,7 @@ import com.litongjava.study.spring.boot.elmentui.service.ContactService;
  * @author litongjava
  * @since 2023-04-12
  */
-@Controller
+@RestController
 @RequestMapping("/contact")
 @CrossOrigin
 public class ContactController {
@@ -28,7 +25,7 @@ public class ContactController {
   private ContactService contactService;
 
   @GetMapping(value = "/")
-  public ResponseEntity<Page<Contact>> list(@RequestParam(required = false) Integer current, @RequestParam(required = false) Integer pageSize) {
+  public R<Page<Contact>> list(@RequestParam(required = false) Integer current, @RequestParam(required = false) Integer pageSize) {
     if (current == null) {
       current = 1;
     }
@@ -36,29 +33,29 @@ public class ContactController {
       pageSize = 10;
     }
     Page<Contact> aPage = contactService.page(new Page<>(current, pageSize));
-    return new ResponseEntity<>(aPage, HttpStatus.OK);
+    return R.ok(aPage);
   }
 
   @GetMapping(value = "/{id}")
-  public ResponseEntity<Contact> getById(@PathVariable("id") String id) {
-    return new ResponseEntity<>(contactService.getById(id), HttpStatus.OK);
+  public R<Contact> getById(@PathVariable("id") String id) {
+    return R.ok(contactService.getById(id));
   }
 
   @PostMapping(value = "/create")
-  public ResponseEntity<Object> create(@RequestBody Contact params) {
-    contactService.save(params);
-    return new ResponseEntity<>("created successfully", HttpStatus.OK);
+  public R<Boolean> create(@RequestBody Contact params) {
+    boolean save = contactService.save(params);
+    return R.ok(save);
   }
 
   @PostMapping(value = "/delete/{id}")
-  public ResponseEntity<Object> delete(@PathVariable("id") String id) {
-    contactService.removeById(id);
-    return new ResponseEntity<>("deleted successfully", HttpStatus.OK);
+  public R<Boolean> delete(@PathVariable("id") String id) {
+    boolean b = contactService.removeById(id);
+    return R.ok(b);
   }
 
   @PostMapping(value = "/update")
-  public ResponseEntity<Object> delete(@RequestBody Contact params) {
-    contactService.updateById(params);
-    return new ResponseEntity<>("updated successfully", HttpStatus.OK);
+  public R<Boolean> delete(@RequestBody Contact params) {
+    boolean b = contactService.updateById(params);
+    return R.ok(b);
   }
 }

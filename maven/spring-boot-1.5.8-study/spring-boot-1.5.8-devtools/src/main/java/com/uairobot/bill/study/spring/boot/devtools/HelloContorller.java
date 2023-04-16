@@ -15,18 +15,19 @@ public class HelloContorller {
   private ApplicationContext ac;
   @RequestMapping
   public String hello(){
-    return "hello hxxx";
+    return "hello 11xx";
   }
 
   @RequestMapping("classLolaer")
   public String classLolaer() {
     //org.springframework.boot.devtools.restart.classloader.RestartClassLoader@16fb7593
     return this.getClass().getClassLoader().toString();
+
   }
-  
+
   @RequestMapping("beans")
   public String[] beans() {
     return ac.getBeanDefinitionNames();
-    
+
   }
 }
