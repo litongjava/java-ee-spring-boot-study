@@ -9,5 +9,6 @@
     <module>spring-boot-2.7.0-sharding-sphere-jdbc</module>
     <module>spring-boot-2.7.0-pdf-preview</module>
     <module>spring-boot-2.7.0-web-base</module>
+    <module>spring-boot-2.7.0-scheduling</module>
   </modules>
 </project>
