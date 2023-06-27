@@ -15,8 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.litongjava.utils.string.StringUtils;
-
+import cn.hutool.core.util.StrUtil;
 import io.minio.BucketExistsArgs;
 import io.minio.DownloadObjectArgs;
 import io.minio.GetObjectArgs;
@@ -547,7 +546,7 @@ public class MinioClientUtils {
 
       InputStream file = minioClient.getObject(GetObjectArgs.builder().bucket(bucketName).object(fileName).build());
       String filename = new String(fileName.getBytes("ISO8859-1"), StandardCharsets.UTF_8);
-      if (StringUtils.isNotEmpty(originalName)) {
+      if (StrUtil.isNotEmpty(originalName)) {
         fileName = originalName;
       }
       response.setHeader("Content-Disposition", "attachment;filename=" + filename);
