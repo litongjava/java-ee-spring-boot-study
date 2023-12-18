@@ -73,8 +73,7 @@
       <version>${vertx.version}</version>
       <classifier>shaded</classifier>
     </dependency>
-
-
+  </dependencies>
     <dependencyManagement>
       <dependencies>
         <dependency>
@@ -85,6 +84,5 @@
           <scope>import</scope>
         </dependency>
       </dependencies>
-    </dependencyManagement>
-  </dependencies>
+    </dependencyManagement>  
 </project>
