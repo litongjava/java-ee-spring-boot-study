@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SSE Example</title>
+</head>
+<body>
+	<h1>SSE Example</h1>
+	<div id="sse-data"></div>
+</body>
+<script>
+	const eventSource = new EventSource('/sse');
+	const sseDataElement = document.getElementById('sse-data');
+
+	eventSource.onmessage = function(event) {
+		console.log("event:", event);
+		sseDataElement.innerHTML += event.data + '<br>';
+	};
+
+	eventSource.onopen = function(event) {
+		sseDataElement.innerHTML = 'Connection opened<br>';
+	};
+
+	eventSource.onerror = function(event) {
+		if (event.target.readyState === EventSource.CLOSED) {
+			sseDataElement.innerHTML += 'Connection closed<br>';
+		} else {
+			sseDataElement.innerHTML += 'Error occurred<br>';
+		}
+	};
+</script>
+</html>
